@@ -1,0 +1,39 @@
+
+#include <iostream>
+using namespace std;
+
+// Class definition
+class Player {
+    // Data Members (private as nothing is mentioned)
+    int runs;
+    int fours;
+    int sixes;
+
+public:
+    // Setter ...input from user 
+    void setDetails() {
+        cout << "Enter Runs : ";
+        cin >> runs;
+        cout << "Enter  Fours : ";
+        cin >> fours;
+        cout << "Enter Sixes : ";
+        cin >> sixes;
+    }
+
+    // Getter function - to display the details
+    void getDetails() {
+        cout << "\n Virat Kohli Batting Stats \n";
+        cout << "Runs: " << runs << endl;
+        cout << "Fours: " << fours << endl;
+        cout << "Sixes: " << sixes << endl;
+    }
+};
+
+int main() {
+    Player virat;  //  object
+
+    virat.setDetails();  // seetter for input 
+    virat.getDetails();  //  getter to show data
+
+    return 0;
+}
