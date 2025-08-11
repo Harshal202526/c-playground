@@ -2,7 +2,6 @@
 #include <iostream>
 using namespace std;
 
-// Class definition
 class Player {
     // Data Members (private as nothing is mentioned)
     int runs;
@@ -20,7 +19,7 @@ public:
         cin >> sixes;
     }
 
-    // Getter function - to display the details
+    // Getter function - to display  details
     void getDetails() {
         cout << "\n Virat Kohli Batting Stats \n";
         cout << "Runs: " << runs << endl;
@@ -37,3 +36,4 @@ int main() {
 
     return 0;
 }
+
