@@ -1,0 +1,122 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Player {
+public:
+    string name;
+    int runs, fours, sixes;
+
+    // Default constructor
+    Player() {
+        name = "Unknown";
+        runs = fours = sixes = 0;
+    }
+
+    // Parameterized constructor
+    Player(string n, int r, int f, int s) {
+        name = n;
+        runs = r;
+        fours = f;
+        sixes = s;
+    }
+
+    // Setter 1: no parameters → input from user
+    virtual void setData() {
+        cout << "Enter Player Name: ";
+        getline(cin, name);
+        cout << "Enter Runs: ";
+        cin >> runs;
+        cout << "Enter Fours: ";
+        cin >> fours;
+        cout << "Enter Sixes: ";
+        cin >> sixes;
+        cin.ignore(); // clear input buffer for next getline
+    }
+
+    // Setter 2: parameters → direct assignment
+    virtual void setData(string n, int r, int f, int s) {
+        name = n;
+        runs = r;
+        fours = f;
+        sixes = s;
+    }
+
+    // Getter to display player info
+    virtual void getData() {
+        cout << "Player Name: " << name << endl;
+        cout << "Runs: " << runs << endl;
+        cout << "Fours: " << fours << endl;
+        cout << "Sixes: " << sixes << endl;
+    }
+};
+
+class Batsman : public Player {
+public:
+    string battingStyle;
+
+    // Default constructor for Batsman
+    Batsman() {
+        battingStyle = "Right-hand";
+    }
+
+    // Parameterized constructor for Batsman
+    Batsman(string n, int r, int f, int s, string style) : Player(n, r, f, s) {
+        battingStyle = style;
+    }
+
+    // Override setData (user input)
+    void setData() override {
+        Player::setData();  // call base class setData for common data
+        cout << "Enter Batting Style: ";
+        getline(cin, battingStyle);
+    }
+
+    // Override setData (direct assignment)
+    void setData(string n, int r, int f, int s, string style) {
+        Player::setData(n, r, f, s);  // assign base data
+        battingStyle = style;          // assign extra data
+    }
+
+    // Override getData to include batting style
+    void getData() override {
+        Player::getData();  // print base data
+        cout << "Batting Style: " << battingStyle << endl;
+    }
+};
+
+int main() {
+    Player p1, p2, p3("Dhoni", 183, 20, 10);
+     Batsman b1("Sachin", 200, 25, 12, "Left-hand");
+
+    // Show initial data of players
+    p1.getData();
+    cout << endl;
+     p2.getData();
+    cout << endl;
+    p3.getData();
+    
+    cout << endl;
+
+    // Show batsman data
+    b1.getData();
+    cout << endl;
+
+    // e input from user for p1
+    cout << "Enter data for player p1:\n";
+    p1.setData(); 
+    
+    p1.getData();
+    cout << endl;
+
+    // Set data directly for p2
+    p2.setData("Kohli", 254, 30, 15);
+    p2.getData();
+    cout << endl;
+
+    // Set data directly for batsman b1 including batting style
+    b1.setData("shikhar dhawan", 210, 28, 14, "Right-hand");
+    b1.getData();
+
+    return 0;
+}
