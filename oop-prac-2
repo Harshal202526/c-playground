@@ -1,0 +1,86 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Player {
+public:
+    int runs;
+    int fours;
+    int sixes;
+    string name;
+
+    // 1. Setter1 → take input from user
+    void setter1() {
+        cout << "Enter Player Name: ";
+        getline(cin, name);
+
+        cout << "Enter Runs: ";
+        cin >> runs;
+
+        cout << "Enter Fours: ";
+        cin >> fours;
+
+        cout << "Enter Sixes: ";
+        cin >> sixes;
+    }
+
+    // 2. Setter2 → s(no user input)
+    void setter2(string n, int r, int f, int s) {
+        name = n;
+        runs = r;
+        fours = f;
+        sixes = s;
+    }
+
+    //  Getter → sdetails on screen
+    void getter() {
+        cout << "\n--- Player Batting Stats ---\n";
+        cout << "Name: " << name << "\n";
+        cout << "Runs: " << runs << "\n";
+        cout << "Fours: " << fours << "\n";
+        
+        cout << "Sixes: " << sixes << "\n";
+    }
+
+    // Default Constructor
+    Player() {
+        name = "Unknown";
+        runs = 0;
+        
+        fours = 0;
+        
+        sixes = 0;
+    }
+
+    // Parameterized 
+    Player(int r) {
+        name = "Default Player";
+        runs = r;
+        
+        fours = 0;
+        sixes = 0;
+    }
+};
+
+int main() {
+    Player p1, p2,  p3(120);  // create 3 objects
+
+    // Show p1 (default constructor values)
+    p1.getter();
+
+    cin.ignore();  // clears leftover input before getline
+    // Take input from user for p1
+    p1.setter1();
+    
+    
+    p1.getter();
+
+    // Set values directly for p2
+    p2.setter2("Virat Kohli", 254, 25, 12);
+    p2.getter();
+
+    // Show p3(created with parameterized constructor
+    p3.getter();
+
+    return 0;
+}
