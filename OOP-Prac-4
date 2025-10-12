@@ -1,0 +1,56 @@
+#include<iostream> 
+using namespace std; 
+class Player{ 
+ int goals; 
+ int assists; 
+ int matches; 
+ public: 
+ void setDetails(){ 
+     cout<<"enter goals "; 
+     cin>>goals; 
+     cout<<"enter asists "; 
+     cin>>assists; 
+     cout<<"enter matches played "; 
+     cin>>matches; 
+      
+ } 
+Player operator+(Player p){ 
+    Player temp; 
+    temp.goals = goals + p.goals; 
+    temp.assists = assists + p.assists; 
+    temp.matches = matches + p.matches; 
+    return temp; 
+} 
+bool operator==(Player p){ 
+    return (goals == p.goals && assists == p.assists && matches == p.matches); 
+} 
+void getDetails(){ 
+    cout<<"Lionel messi football sta s s "<<endl; 
+    cout<<"GOals"<<goals<<endl; 
+    cout<<"assists "<<assists<<endl; 
+    cout<<"matches Played "<<matches<<endl; 
+} 
+}; 
+int main(){ 
+    Player messi1; 
+    cout<<"\nenter details for first season\n"<<endl; 
+    messi1.setDetails(); 
+     
+    Player messi2; 
+    cout<<"\nenter DEtails for second season\n "<<endl; 
+    messi2.setDetails(); 
+     
+    Player combined = messi1+messi2; 
+    messi1.getDetails(); 
+    messi2.getDetails(); 
+     
+    cout<<"Combined Stats "<<endl; 
+    combined.getDetails(); 
+        if(messi1 == messi2) 
+        cout <<" Iden cal stats in Both seasons \n"<<endl; 
+        else  
+         
+        cout<<" Different stats in seasons \n"; 
+        return 0; 
+         
+    }
